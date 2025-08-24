@@ -3,7 +3,9 @@
 - an repo I have made to learn PHP and Laravel framework
 
 ## Basics
+
 - Variables
+
 ```php
 <?php
     $variable = "value";
@@ -14,13 +16,17 @@
     echo '$gretting $person'; // output: $gretting $person
 ?>
 ```
+
 - Printing strings
+
 ```php
 <?php echo "Hello World"; ?>
 <?php echo "Hello" . "World"; ?> // the . is the concatenation opperator in php
 
 ```
+
 - Conditionals
+
 ```php
 <?php
 $book = "DragonKnight";
@@ -32,7 +38,9 @@ if ($isRead) {
 }
 ?>
 ```
+
 - Arrays:
+
 ```php
 <?php $books = [
     "DragonKnight",
@@ -46,7 +54,45 @@ if ($isRead) {
     <?= $books[1]; ?>   // 0 based indexing, output: Game of Thrones
 </ul>
 ```
+
+- Associative Arrays (dicts of php):
+
+```php
+<?php $books = [
+    [
+        "name" => "DragonKnight",
+        "author" => "BunnyEncoder",
+        "purchaseURL" => "https://example.com",
+    ],
+    [
+        "name" => "Harry Potter",
+        "author" => "J K Rollin",
+        "purchaseURL" => "https://buyHarryPotter.com",
+    ],
+    [
+        "name" => "Game of Thrones",
+        "author" => "George RR Martin",
+        "purchaseURL" => "https://gameofthrones.com",
+    ],
+]; ?>
+<div>
+    <h1>
+        Books You can Buy
+    </h1>
+    <ul>
+        <?php foreach ($books as $book): ?>
+            <li>
+                <a href="<?= $book['purchaseURL']; ?>">
+                    <?= $book['name']; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+```
+
 - Loops:
+
 ```php
 <?php $items = ["item 1", "item 2", "item 3"]; ?>
 
@@ -68,7 +114,9 @@ if ($isRead) {
 ---
 
 ## Important Commands
+
 - Running your built-in PHP developmental server:
+
 ```bash
 php -S <addr>:<port>
 php -S localhost:8888
