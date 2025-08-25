@@ -26,6 +26,7 @@
 ```
 
 - Conditionals
+  - **NOTE:** The comparision symbol is '===' (not '==' like most other languages)
 
 ```php
 <?php
