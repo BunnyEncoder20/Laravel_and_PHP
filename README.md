@@ -4,18 +4,7 @@
 
 ## Basics
 
-- Variables
-
-```php
-<?php
-    $variable = "value";
-
-    $gretting = "Hellow";
-    $person = "Soma";
-    echo "$gretting $person"; // note that this only works for ""
-    echo '$gretting $person'; // output: $gretting $person
-?>
-```
+### Variables & Data Types
 
 - Variables and there types:
 
@@ -25,106 +14,75 @@
   - float or double
   - null
   - array
-  - Object
-  - Resource
-
-```php
-
-```
-
-- Printing strings
-
-```php
-<?php echo "Hello World"; ?>
-<?php echo "Hello" . "World"; ?> // the . is the concatenation opperator in php
-
-```
-
-- Conditionals
-  - **NOTE:** The comparision symbol is '===' (not '==' like most other languages)
+  - Object (advanced)
+  - Resource (advanced)
 
 ```php
 <?php
-$book = "DragonKnight";
-$isRead = false;
-if ($isRead) {
-    $msg = "I've read the $book";
-} else {
-    $msg = "I've not read the $book";
-}
+    $name = 'Zura';
+    $age = 32;
+    $isFather = true;
+    $money = 19.99;
+    $salary = null;
+
+    echo $name . " " . gettype($name) . " " . "<br>";
+    echo $age . " " . gettype($age) . " " . "<br>";
+    echo $isFather . " " . gettype($isFather) . " " . "<br>";
+    echo $money . " " . gettype($money) . " " . "<br>";
+    echo $salary . " " . gettype($salary) . " " . "<br>";
+    echo "<br><br><br>"
 ?>
 ```
 
-- Arrays:
+- Printing debug / info of variables, use var_dump()
 
 ```php
-<?php $books = [
-    "DragonKnight",
-    "Game of Thrones",
-    "Love Death and Robots",
-]; ?>
-<h1>
-    <?php echo "Books"; ?>
-</h1>
-<ul>
-    <?= $books[1]; ?>   // 0 based indexing, output: Game of Thrones
-</ul>
+<h2>Printing Varaibles values and info</h2>
+<?php
+    print_r($name);  // also an option, same as echo
+    echo "<br>";
+    var_dump($name); // gives a little more info
+    echo "<br>";
+    var_dump($age);
+    echo "<br>";
+    var_dump($isFather);
+    echo "<br>";
+    var_dump($money);
+    echo "<br>";
+    var_dump($salary);
+    echo "<br>";
+?>
 ```
 
-- Associative Arrays (dicts of php):
+- Variable checking functions
 
 ```php
-<?php $books = [
-    [
-        "name" => "DragonKnight",
-        "author" => "BunnyEncoder",
-        "purchaseURL" => "https://example.com",
-    ],
-    [
-        "name" => "Harry Potter",
-        "author" => "J K Rollin",
-        "purchaseURL" => "https://buyHarryPotter.com",
-    ],
-    [
-        "name" => "Game of Thrones",
-        "author" => "George RR Martin",
-        "purchaseURL" => "https://gameofthrones.com",
-    ],
-]; ?>
-<div>
-    <h1>
-        Books You can Buy
-    </h1>
-    <ul>
-        <?php foreach ($books as $book): ?>
-            <li>
-                <a href="<?= $book['purchaseURL']; ?>">
-                    <?= $book['name']; ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-</div>
+<h2>Type checking</h2>
+<?php
+    var_dump(is_string($name));
+    echo "<br>";
+    var_dump(is_string($age));
+    echo "<br>";
+    var_dump(isset($salary));   // checks if variables is DEFINED
+    echo "<br>";
+    var_dump(isset($country));  // Salary is defined (not assigned a value) and country is not
+?>
 ```
 
-- Loops:
+### Strings
+
+- There are a lot of string functioins of php. Check out the docs [here](https://www.php.net/manual/en/ref.strings.php).
+- Some commonly used ones :
 
 ```php
-<?php $items = ["item 1", "item 2", "item 3"]; ?>
-
-<h3>The First Method</h3>
-<ul>
-    <?php foreach ($items as $item) {
-        echo "<li>$item</li>";
-    } ?>
-</ul>
-
-<h3>The Second Method</h3>
-<ul>
-    <?php foreach ($items as $item): ?>
-        <li><?php echo $item; ?></li>
-    <?php endforeach; ?>
-</ul>
+<?php
+    $str = "Varun and Soma are besties";
+    echo "{$str} <br>";
+    echo strtolower($str) . "<br>";
+    echo strtoupper($str) . "<br>";
+    echo str_replace("besties", "Best Friends Forever", $str) . "<br>";
+    echo str_word_count($str) . "<br>"
+?>
 ```
 
 ---
@@ -136,4 +94,5 @@ if ($isRead) {
 ```bash
 php -S <addr>:<port>
 php -S localhost:8888
+php -S localhost:8888 <filename>.php
 ```

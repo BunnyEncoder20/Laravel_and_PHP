@@ -70,8 +70,6 @@
         echo "<br>";
         var_dump(isset($country));  // Salary is defined (not assigned a value) and country is not 
         ?>
-
-
     </div>
 </body>
 
