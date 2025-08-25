@@ -85,7 +85,25 @@
 ?>
 ```
 
----
+### Numbers & Arthematics
+
+- Can have a look at all the Numbers docs [here] (https://www.php.net/manual/en/book.math.php) there are a lot.
+- Common arithematics remain the same as other languages:
+  - add: +
+  - increment: ++
+  - subs: -
+  - decrement: --
+  - multiply: \*
+  - divide: /
+  - remainder: %
+  - power: \*\*
+- There are also the min and max funcs:
+  - min(values...) - returns min of variables or array of variables
+  - max(values...) - same but max value
+
+### Conditionals
+
+- ***
 
 ## Important Commands
 
