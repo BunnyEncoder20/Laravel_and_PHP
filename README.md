@@ -17,6 +17,21 @@
 ?>
 ```
 
+- Variables and there types:
+
+  - string
+  - integer
+  - boolean
+  - float or double
+  - null
+  - array
+  - Object
+  - Resource
+
+```php
+
+```
+
 - Printing strings
 
 ```php
