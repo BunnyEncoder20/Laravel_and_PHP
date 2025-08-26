@@ -228,6 +228,36 @@ if ($age > 18 and !$haveDrivingLisence) {
 ?>
 ```
 
+### Loops
+- There are the classic types:
+    - For loop
+    ```php
+        <?php
+            for ($i = 0; $i<5; $i++) {
+                echo "ran $i times <br>";
+            }
+        ?>
+    ```
+    - while loop
+    ```php
+    <?php
+        $i = 1;
+        while ($i < 5) {
+            echo "ran $i times <br>";
+        }
+    ?>
+    ```
+    - foreach loop (suitalble for iterables like arrays)
+    ```php
+    <?php
+        $names = ['Varun','Soma','Bunnu','Hoods'];
+        foreach ($names as $name) {
+            echo "Hello $name <br>";
+        }
+    ?>
+    ```
+
+
 ## Important Commands
 
 - Running your built-in PHP developmental server:
