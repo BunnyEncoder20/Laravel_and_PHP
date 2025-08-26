@@ -144,6 +144,90 @@ if ($age > 18 and !$haveDrivingLisence) {
 
 #### Switch
 
+- The do old switch block. Same as always
+
+```php
+<?php
+    $day = 7;
+    switch ($day) {
+        case 1:
+            echo "Monday";
+            break;
+        case 2:
+            echo "Tuesday";
+            break;
+        case 3:
+            echo "Wednesday";
+            break;
+        case 4:
+            echo "Thrusday";
+            break;
+        case 5:
+            echo "Friday";
+            break;
+        case 6:
+            echo "Saturday";
+            break;
+        case 7:
+            echo "Sunday";
+            break;
+        default:
+            echo "Invalid day number";
+    }
+?>
+```
+
+### Arrays
+
+#### Indexed Arrays
+```php
+<?php
+    $fruits = ["Apple", "Banana", "Cherry"];
+    echo $fruits[2] . "<br>";
+
+    $fruits[3] = "Peach";
+    echo "<pre>";       // tag to make the array look nice
+    var_dump($fruits);
+    echo "</pre>";
+?>
+```
+#### Mixed Arrays
+- just like arrays of python, php arrays are mixed by default.
+```php
+<?php
+    $mixedArray = ["String", 123, true];
+    echo "<pre>";
+    var_dump($fruits);
+    echo "</pre>";
+    echo "<br>";
+?>
+```
+
+#### Associative Arrays (Dicts basically)
+- Are arrays only but are used as a substitue for dictionaries. Don't think they have the same benefits though, only resembles the structure.
+```php
+<?php
+    $users = [
+        "001" => [
+            "name" => "Varun",
+            "age" => 24,
+            "email" => "varun@example.com",
+            "hobbies" => ['Coding','Biking']
+        ],
+        "002" => [
+            "name" => "Soma",
+            "age" => 25,
+            "email" => "soma@example.com",
+            "hobbies" => ['MMA','ghoomna']
+        ]
+    ];
+    echo "User001's name is " . $users['001']['name'] ;
+    echo "<br>";
+    echo $users['002']['name'] . " likes to " . $users['002']['hobbies'][1];
+    echo "<br>";
+?>
+```
+
 ## Important Commands
 
 - Running your built-in PHP developmental server:
