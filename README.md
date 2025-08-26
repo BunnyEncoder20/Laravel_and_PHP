@@ -285,6 +285,52 @@ if ($age > 18 and !$haveDrivingLisence) {
 ?>
 ```
 
+## Form Super Globals
+- SuperGlobal variables hold all the informations related to your page and website
+- Whenever we want to get GET, POST data from the html, we use super globals.
+- Eg:
+```php
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+        $phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_NUMBER_INT);
+
+        if ($name && $email && $phone) {
+            echo "Contact details added: $name: $phone ($email)";
+        } else {
+            echo "Invalid input";
+        }
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Super Globals</title>
+</head>
+<body>
+    <form action="" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name">
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email">
+        <br>
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone">
+        <br>
+        <button type="submit">Send Data</button>
+    </form>
+</body>
+</html>
+```
+- Notice that we need to need to sanitize the inputs. These are necessary to prevent hacking.
+- IF the inputs do not sanitary, then the variables are assigned NULL
+-
+
 ## Important Commands
 
 - Running your built-in PHP developmental server:
