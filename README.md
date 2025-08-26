@@ -257,6 +257,33 @@ if ($age > 18 and !$haveDrivingLisence) {
     ?>
     ```
 
+### Functions
+- Simple functions:
+```php
+<?php
+    function sayHello(): void
+    {
+        echo "Hello World <br>";
+    }
+
+    function greet($name = 'Guest'): void
+    {
+        echo "Hello $name <br>";
+    }
+
+    function multiply($x, $y): int
+    {
+        return $x*$y;
+    }
+?>
+
+<?php
+  sayHello();           // simple function
+  greet();              // param function
+  greet("Soma");        // default params
+  echo multiply(3,4);   // returning function
+?>
+```
 
 ## Important Commands
 
