@@ -97,13 +97,52 @@
   - divide: /
   - remainder: %
   - power: \*\*
+  - sqrt: square root
 - There are also the min and max funcs:
   - min(values...) - returns min of variables or array of variables
   - max(values...) - same but max value
 
 ### Conditionals
 
-- ***
+#### if-else + comparision operators
+
+- assignment: =
+- check equal: ==
+- check equal: ===
+- not equal: != or <>
+- not double equal: !==
+- less than, greater than:<,<=,>, >=
+
+```php
+<?php
+    $age = 22;
+    $watched = true;
+
+    if ($age < 13) {
+        echo "You are a child";
+    } else if ($age < 19) {
+        echo "You are a teeanger";
+    } else {
+        echo "You are a adult";
+    }
+?>
+```
+
+#### Logical Operators
+
+- and: &&
+- or: ||
+- not: !
+
+```php
+<?php
+if ($age > 18 and !$haveDrivingLisence) {
+    echo "You can ride a bike";
+}
+?>
+```
+
+#### Switch
 
 ## Important Commands
 
