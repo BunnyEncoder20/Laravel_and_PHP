@@ -1,2 +1,6 @@
 PHP_1HR_crash_course/forms_superglobals/uploads/*
 contacts.json
+
+# Ignore Composer generated files
+PHP_1HR_crash_course/09_composer/vendor/
+PHP_1HR_crash_course/09_composer/composer.lock
