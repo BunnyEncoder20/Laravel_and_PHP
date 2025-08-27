@@ -1,15 +1,7 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
-        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-        $phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_NUMBER_INT);
+  $contactsFile = 'contacts.json';
+  $contacts = file_exists($contactsFile) ? json_decode(file_get_contents($contactsFile), true) : [];
 
-        if ($name && $email && $phone) {
-            echo "Contact details added: $name: $phone ($email)";
-        } else {
-            echo "Invalid input";
-        }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -17,20 +9,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forms Super Globals</title>
+  <title>Contacts</title>
 </head>
 <body>
-    <form action="" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name">
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" name="email">
-        <br>
-        <label for="phone">Phone:</label>
-        <input type="tel" name="phone">
-        <br>
-        <button type="submit">Send Data</button>
-    </form>
+    <div>
+        <h1><a href="create.php">Create a Contact</a></h1>
+    </div>
+    <div>
+        <ul>
+            <?php foreach ($contacts as $contact): ?>
+                <li>
+                    <img src="<?= $contact['image']; ?>" alt="alt text" />
+                    <?php echo "{$contact['name']} - {$contact['email']} - {$contact['phone']}"; ?>
+                    <br>
+                    <a href="delete.php?name=<?= urlencode($contact['name']) ?>">
+                        Delete Contact
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 </body>
 </html>
