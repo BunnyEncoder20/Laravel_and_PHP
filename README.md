@@ -497,7 +497,75 @@ if the file was inside another dir, lets say 'Models' then namespace would chang
 
 ```
 
+## Databases
+- **"pdo"** is the standard way to connecting to databases in php
+- The below is an example of how to init a "pdo" instance and return it (usually in the 'db.php file).
+- CREATE
+```php
+<?php
+    try {
+        $pdo = new PDO('sqlite:contacts.db'); //sqlite file
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Error handling
+        $pdo->exec("
+            CREATE TABLE IF NOT EXISTS contacts (
+                id INTEGER PRIMARY KEY,
+                name TEXT NOT NULL,
+                email TEXT NOT NULL,
+                phone TEXT,
+                image TEXT
+            );
+        "); // exec sql command
+        return $pdo; // return instance
+    } catch (PDOException $e) {
+        echo $e;
+        return null;
+    }
+?>
+```
+- READ
+```php
+<?php
+  $pdo = require 'db.php';  // fetches the pdo instance
+  $contacts = [];
 
+  if ($pdo) {
+      // querying the db
+      $stmt = $pdo->query("
+        SELECT * FROM contacts;
+      ");
+
+      // fetch all contacts as associative arrays
+      $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC) ;
+  }
+?>
+```
+- UPDATE / INSERT
+```php
+<?php
+    $pdo = require 'db.php';
+
+    // we first make the statement/query for db
+    $stmt = $pdo->prepare("
+        INSERT INTO contacts (name, email, phone, image)
+        VALUES (:name, :email, :phone, :image)
+    "); // is : are on purpose
+
+    // then execute it, filling in the vars
+    $stmt->execute([
+        ':name' => $name,
+        ':email' => $email,
+        ':phone' => $phone,
+        ':image' => $imagePath
+    ]);
+?>
+```
+- DELETE
+```php
+<?php
+    $stmt = $pdo->prepare("DELETE FROM contacts WHERE name = :name");
+    $stmt->execute([":name"=>$contact_name]);
+?>
+```
 ---
 
 ## Important Commands
