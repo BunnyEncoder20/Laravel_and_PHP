@@ -1,0 +1,17 @@
+{
+    "name": "varunverma/09_composer",
+    "autoload": {
+        "psr-4": {
+            "Varunverma\\Testing\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Varun Verma",
+            "email": "varun.verma2024@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.10"
+    }
+}
