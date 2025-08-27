@@ -287,8 +287,8 @@ if ($age > 18 and !$haveDrivingLisence) {
 
 ## Form Super Globals
 - SuperGlobal variables hold all the informations related to your page and website
-- Whenever we want to get GET, POST data from the html, we use super globals.
-- Eg:
+- Whenever we want to get GET, POST data from the html, we use super globals (syntax: $_SUPERGLOBAL).
+- Eg: $_SERVER, $_FILES
 ```php
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
