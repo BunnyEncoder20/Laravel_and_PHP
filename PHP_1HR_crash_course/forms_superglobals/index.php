@@ -1,7 +1,6 @@
 <?php
   $contactsFile = 'contacts.json';
   $contacts = file_exists($contactsFile) ? json_decode(file_get_contents($contactsFile), true) : [];
-
 ?>
 
 <!DOCTYPE html>

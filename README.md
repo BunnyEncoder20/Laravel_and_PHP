@@ -286,6 +286,7 @@ if ($age > 18 and !$haveDrivingLisence) {
 ```
 
 ## Form Super Globals
+
 - SuperGlobal variables hold all the informations related to your page and website
 - Whenever we want to get GET, POST data from the html, we use super globals (syntax: $_SUPERGLOBAL).
 - Eg: $_SERVER, $_FILES
@@ -329,7 +330,119 @@ if ($age > 18 and !$haveDrivingLisence) {
 ```
 - Notice that we need to need to sanitize the inputs. These are necessary to prevent hacking.
 - IF the inputs do not sanitary, then the variables are assigned NULL
--
+
+## File & Dir Handling
+- We can access the file data by making the form encypt type as a **mulitpart form** and using the **$_FILES** super global
+- The **$_FILES** would look something like this:
+```bash
+<?php
+    echo "<pre>";
+    var_dump($_FILES);
+    echo "</pre>";
+?>
+// Output:
+array(1) {
+  ["image"]=>
+  array(6) {
+    ["name"]=>
+    string(30) "pexels-daniel-43199-217872.jpg"
+    ["full_path"]=>
+    string(30) "pexels-daniel-43199-217872.jpg"
+    ["type"]=>
+    string(10) "image/jpeg"
+    ["tmp_name"]=>
+    string(79) "/private/var/folders/6l/6cz1m8ld13z9chh7hjbbncdw0000gn/T/php9f9qpfdb770hcb78EA1"
+    ["error"]=>
+    int(0)
+    ["size"]=>
+    int(1237915)
+  }
+}
+```
+- Using the information given in the **$FILES** superglobal, we can handle the files storage into more permanent place (local_dir or database)
+```php
+<?php
+    $upload_dir = 'uploads/';
+    $contactsFile = 'contacts.json';
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+        $phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_NUMBER_INT);
+
+        if ($name && $email && $phone && isset($_FILES['image'])) {
+            // ensure dir exists
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0777, true); // 0777 = create with full permissions
+            }
+            $imageName = time() . "_" . basename($_FILES['image']['name']);
+            $imagePath = $upload_dir . $imageName;
+
+            // move uploaded_file: func to move the uploaded files to new (permanent) location
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
+                // file_get_content reads the files content
+                // json_decode converts it into a array
+                // file_put_content writes contacts to file
+                // json_encode converts array into json
+
+                $contacts = file_exists($contactsFile) ?
+                            json_decode(file_get_contents($contactsFile), true)
+                            : [];
+                $contacts[] = [
+                    'name' => $name,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'image' => $imagePath
+                ];
+                file_put_contents($contactsFile, json_encode($contacts, JSON_PRETTY_PRINT));
+            }
+
+            echo "Contact details added: $name: $phone ($email)";
+        } else {
+            echo "Invalid input<br>";
+            echo "$name<br>";
+            echo "$email<br>";
+            echo "$phone<br>";
+            echo "<pre>";
+            var_dump($_FILES);
+            echo "</pre>";
+        }
+    }
+?>
+```
+- Reading from a file:
+```php
+<?php
+  $contactsFile = 'contacts.json';
+  $contacts = file_exists($contactsFile) ? json_decode(file_get_contents($contactsFile), true) : [];
+?>
+```
+- Writing to a file:
+```php
+<?php
+  $contactsFile = 'contacts.json';
+  $contacts = file_exists($contactsFile) ? json_decode(file_get_contents($contactsFile), true) : [];
+  file_put_contents($contactsFile, json_encode($contacts, JSON_PRETTY_PRINT));
+?>
+```
+- Deleting a file:
+```php
+<?php
+    foreach ($contacts as $key => $con) {
+        if ($con['name'] === $nameToDelete) {
+            // Delete the image file if it exists
+            if (!empty($con['image']) && file_exists($con['image'])) {
+                unlink($con['image']);   // deletes the file
+            }
+            unset($contacts[$key]); // remove the contact
+        }
+    }
+?>
+```
+
+
+
+---
 
 ## Important Commands
 
