@@ -440,6 +440,62 @@ array(1) {
 ?>
 ```
 
+## Composer
+- Composer is a tool for dependency management (package manager) in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
+- Like npm for javascript or uv,pip for python.
+
+## Req & Res using GuzzleHttp
+```php
+<?php
+    // registers all the 3rd party packages
+    require 'vendor/autoload.php';
+
+    // GuzzleHttp package allows use to send req to APIs
+    use GuzzleHttp\Client;
+    $client = new Client();
+    $response = $client->request('GET', 'https://meowfacts.herokuapp.com/?count=3');
+    $body = $response->getBody();
+    $responseData = json_decode($body);
+
+    foreach ($responseData as $fact) {
+      echo $fact . "<br>";
+    }
+?>
+```
+- **NOTE:** there are 2 ways to access the incoming data:
+    1. _Convert it into a php array_ (json_decode($res, true); the second true param of json_decode will convert the incoming json into a array)
+    2. _Stick to the object oriented_, done like above example, using "->". Remember for this the data must be a object from stdClass
+
+## Organizing Classes withing the src dir
+- src dir is where all of the classes of our project will be.
+- Remember to declare the namespace properly (the default/base one is always there in your compose.json at root dir)
+- If the file is in src dir, namespace would be:
+```php
+<?php
+    namespace Varunverma\Testing;
+    class MyClass
+    {
+        function run(): void
+        {
+            echo "Hellow from MyClass Instance";
+        }
+    }
+?>
+```
+if the file was inside another dir, lets say 'Models' then namespace would change as follows:
+```php
+<?php
+    namespace Varunverma\Testing\Models;
+    class MyClass
+    {
+        function run(): void
+        {
+            echo "Hellow from MyClass Instance";
+        }
+    }
+?>
+
+```
 
 
 ---
@@ -447,9 +503,16 @@ array(1) {
 ## Important Commands
 
 - Running your built-in PHP developmental server:
-
 ```bash
 php -S <addr>:<port>
 php -S localhost:8888
 php -S localhost:8888 <filename>.php
+```
+- Initialize composer project
+```bash
+composer init
+```
+- Installing packages
+```bash
+composer require guzzlehttp/guzzle
 ```
