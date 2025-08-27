@@ -1,5 +1,9 @@
-PHP_1HR_crash_course/forms_superglobals/uploads/*
+PHP_1HR_crash_course/09_forms_superglobals/uploads/*
+PHP_1HR_crash_course/10_databases/uploads/*
 contacts.json
+
+# DB files
+*.db
 
 # Ignore Composer generated files
 PHP_1HR_crash_course/09_composer/vendor/
