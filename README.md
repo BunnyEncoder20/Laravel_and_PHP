@@ -566,6 +566,20 @@ if the file was inside another dir, lets say 'Models' then namespace would chang
     $stmt->execute([":name"=>$contact_name]);
 ?>
 ```
+
+## Including files in php
+We can include files in 2 main ways:
+1. using `include`
+```php
+<?php include 'Header.php' ?>
+<?php include 'Footer.php' ?>
+```
+2. using `require`
+```php
+<?php require 'Header.php' ?>
+<?php require 'Footer.php' ?>
+```
+**NOTE:** if a required file is not there, php will throw  a error and stop execution. However when an include file is not there, it will only throw a warning.
 ---
 
 ## Important Commands
