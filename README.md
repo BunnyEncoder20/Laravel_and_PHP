@@ -666,7 +666,8 @@ We can include files in 2 main ways:
 
 ---
 
-## Cookies in PHP
+## Important SuperGlobals in PHP
+### Cookies
 - cookies are set using the setcookie func, which takes
     - key
     - value
@@ -683,7 +684,7 @@ We can include files in 2 main ways:
 ?>
 ```
 
-## Session in PHP
+### Session
 
 - $_SESSION is a super global used to stroe infoon a user to be used across multiple pages. A user is assigned an session-id (ex login cred / token)
 - They $_SESSION like $_COOKIE stores key -> value pairs.
@@ -713,6 +714,20 @@ We can include files in 2 main ways:
     header("Location: index.php");
 ?>
 ```
+
+### Server
+- SBG that contains headers, paths, and script locations. The entrie in this array are crated by the web server. Shows narly everything you need to know about the current web page env.
+- like most SBG, stores data in key -> value pairs.
+- Eg:
+```php
+<?php
+    $_SERVER['PHP_SELF'] = 'location_of/current_page.php'
+    $_SERVER['REQUEST_METHODS'] = 'GET' / 'POST'
+?>
+```
+
+
+
 
 ---
 ## Important Commands
