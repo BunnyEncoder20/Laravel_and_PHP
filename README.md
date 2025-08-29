@@ -636,15 +636,14 @@ We can include files in 2 main ways:
 ?>
 ```
 
-
 ### Important String funcs
 ```php
 <?php
     strlen($string);
     strtolower($string);
     strtoupper($string);
-    strrev($string);       // reverse
-    strcmp($str1, $str2); // compares 2 strings
+    strrev($string);        // reverse
+    strcmp($str1, $str2);   // compares 2 strings
     strpos($string, $char); // returns the position of first occurance of $char
     substr($string, $startIdx, $endIdx) // substring
     trim($string);
@@ -653,7 +652,7 @@ We can include files in 2 main ways:
 
     str_pad($string, $len, $char);  // pads string from behind for $len spaces with $char
     str_replace($this_char, $with_this_char, $string);  // replace chars of strings
-    str_shuffle($string)  // shuffle the chars of theh string
+    str_shuffle($string)  // shuffle the chars of the string
 ?>
 ```
 
@@ -665,6 +664,24 @@ We can include files in 2 main ways:
 ?>
 ```
 
+---
+
+## Cookies in PHP
+- cookies are set using the setcookie func, which takes
+    - key
+    - value
+    - expirations date (eg: time() + (86400 * 2))
+    - file path
+- the cookies stores key value pairs.
+- These are accessible using the $_COOKIE superglobal.
+```php
+<?php
+    setcookie($key, $value, $expirations, $file_path);
+    foreach($_COOKIE as $key => $val) {
+        echo "{$key} -> {$val} <br>" ;
+    }
+?>
+```
 
 ---
 ## Important Commands
