@@ -498,7 +498,7 @@ if the file was inside another dir, lets say 'Models' then namespace would chang
 ```
 
 ## Databases
-- **"pdo"** is the standard way to connecting to databases in php
+- **"pdo" or PHP Data Objects** is the standard way to connecting to databases in php (Because it can conect with several other databases, unlike MySQLi extension)
 - The below is an example of how to init a "pdo" instance and return it (usually in the 'db.php file).
 - CREATE
 ```php
@@ -726,7 +726,21 @@ We can include files in 2 main ways:
 ?>
 ```
 
-
+### Hashing
+- transforming sensitive data (password) into letters, numbers, and/or symbols via a mathematical process. (similar to encryption). Hides the original data from 3rd parties.
+- password_hash() takes followig args:
+    - password string
+    - constant to specify which algo to use for hashing (PASSWORD_DEFUALT = bcrypt algo)
+- password_verify() verifies if the entered password and stored hash are the same. it takes theh following args:
+    - $entered_password
+    - $hash
+```php
+<?php
+    $password = "pizza123";
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $correct_password = password_verify($entered_password, $hash);
+?>
+```
 
 
 ---
