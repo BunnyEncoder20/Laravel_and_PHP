@@ -636,11 +636,32 @@ We can include files in 2 main ways:
 ?>
 ```
 
+
+### Important String funcs
+```php
+<?php
+    strlen($string);
+    strtolower($string);
+    strtoupper($string);
+    strrev($string);       // reverse
+    strcmp($str1, $str2); // compares 2 strings
+    strpos($string, $char); // returns the position of first occurance of $char
+    substr($string, $startIdx, $endIdx) // substring
+    trim($string);
+    explode($delimiter, $string); // returns array with string seperated by delimiter
+    implode($delimiter, $string); // retuns a single string join with delimiter in between
+
+    str_pad($string, $len, $char);  // pads string from behind for $len spaces with $char
+    str_replace($this_char, $with_this_char, $string);  // replace chars of strings
+    str_shuffle($string)  // shuffle the chars of theh string
+?>
+```
+
 ### Important form funcs
 ```php
 <?php
     isset(); // returns TRUE(1) if varible is declared and NOT NULL
-    empty(); // returns TRUE(1) if a variable is not declared, false, null
+    empty(); // returns TRUE(1) if variable is not declared, false, null
 ?>
 ```
 
