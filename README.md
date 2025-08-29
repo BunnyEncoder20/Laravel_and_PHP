@@ -2,7 +2,7 @@
 
 - an repo I have made to learn PHP and Laravel framework
 
-## Basics
+## Basics (Crash Course 1)
 
 ### Variables & Data Types
 
@@ -582,6 +582,25 @@ We can include files in 2 main ways:
 **NOTE:** if a required file is not there, php will throw  a error and stop execution. However when an include file is not there, it will only throw a warning.
 ---
 
+## Bro Code (Crash Course 2)
+- Important Math func:
+```php
+<?php
+    abs();
+    round(x); // rounds x to nearest int
+    round(x, 2); // rounds x to nearest float with 2 decimal places
+    floor();
+    ceil();
+    pow(); // **
+    sqrt();
+    max();
+    min();
+    pi();
+    rand(min, max);
+?>
+```
+
+---
 ## Important Commands
 
 - Running your built-in PHP developmental server:
