@@ -605,10 +605,34 @@ We can include files in 2 main ways:
 ### Important Array func
 ```php
 <?php
-    array_push(arr, value1, value2); // pushes one or more values
-    array_pop(arr); // removes last element
-    rev_arr = array_reverse(arr); // returns the reversed array
-    num_elements = count(arr); // counts the num of elements in array
+    array_push(arr, value1, value2);// pushes one or more values
+    array_pop(arr);                 // removes last element
+    rev_arr = array_reverse(arr);   // returns the reversed array
+    num_elements = count(arr);      // counts the num of elements in array
+?>
+
+// Associative Arrays
+<?php
+    $dict_arr = array(
+    "key1" => "Value1",
+    "key2" => "Value2",
+    "key3" => "Value3",
+    );
+
+    // Foreach variations for dicts/obj: Both key and values
+    foreach($dict_arr as $key => $val) {
+        echo "{$key} -> {$val} <br>";
+    }
+    // only keys
+    foreach(array_keys($dict_arr) => $key) {
+        echo "{$key} <br>";
+    }
+    // only values
+    foreach(array_values($dict_arr) => $val) {
+        echo "{$val} <br>";
+    }
+
+    $flipped_arr = array_flip($dict_arr); // returns a new arr in which keys become values and values become keys
 ?>
 ```
 
