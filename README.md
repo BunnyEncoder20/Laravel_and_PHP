@@ -63,7 +63,7 @@
     echo "<br>";
     var_dump(is_string($age));
     echo "<br>";
-    var_dump(isset($salary));   // checks if variables is DEFINED
+    var_dump(isset($salary));   // returns TRUE if variable id declared and NOT NULL
     echo "<br>";
     var_dump(isset($country));  // Salary is defined (not assigned a value) and country is not
 ?>
@@ -633,6 +633,14 @@ We can include files in 2 main ways:
     }
 
     $flipped_arr = array_flip($dict_arr); // returns a new arr in which keys become values and values become keys
+?>
+```
+
+### Important form funcs
+```php
+<?php
+    isset(); // returns TRUE(1) if varible is declared and NOT NULL
+    empty(); // returns TRUE(1) if a variable is not declared, false, null
 ?>
 ```
 
