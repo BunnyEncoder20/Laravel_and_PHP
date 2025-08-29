@@ -683,6 +683,37 @@ We can include files in 2 main ways:
 ?>
 ```
 
+## Session in PHP
+
+- $_SESSION is a super global used to stroe infoon a user to be used across multiple pages. A user is assigned an session-id (ex login cred / token)
+- They $_SESSION like $_COOKIE stores key -> value pairs.
+- On which every page we would like the session to be, we will have to put the session start code (before the html).
+```php
+<!--Page 1-->
+<?php
+    session_start(); // starts a session
+    $_SESSION['username'] = 'name';
+    $_SESSION['password'] = 'super_secret_pass';
+    header("Location: home_page.php") // to navigate to other page
+?>
+```
+- On the next page if we want the user info from session, we will do:
+```php
+<!--Home Page-->
+<?php
+    session_start();
+    echo $_SESSION['username'];
+    echo $_SESSION['password'];
+?>
+```
+- To end a session, we call the session_destroy()
+```php
+<?php
+    session_destroy();
+    header("Location: index.php");
+?>
+```
+
 ---
 ## Important Commands
 
