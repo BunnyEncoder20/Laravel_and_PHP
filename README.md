@@ -120,7 +120,7 @@
 
     if ($age < 13) {
         echo "You are a child";
-    } else if ($age < 19) {
+    } elseif ($age < 19) {
         echo "You are a teeanger";
     } else {
         echo "You are a adult";
@@ -583,7 +583,9 @@ We can include files in 2 main ways:
 ---
 
 ## Bro Code (Crash Course 2)
-- Important Math func:
+- Thought would do one more crash course to make sure I cover all of the basics. Plus bro code's teaching is pretty great.
+
+### Important Math func:
 ```php
 <?php
     abs();
@@ -599,6 +601,17 @@ We can include files in 2 main ways:
     rand(min, max);
 ?>
 ```
+
+### Important Array func
+```php
+<?php
+    array_push(arr, value1, value2); // pushes one or more values
+    array_pop(arr); // removes last element
+    rev_arr = array_reverse(arr); // returns the reversed array
+    num_elements = count(arr); // counts the num of elements in array
+?>
+```
+
 
 ---
 ## Important Commands
